@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta lang="es-AR">
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		.is-loading {
+			background: red;
+		}
+
+		.is-sending-email {
+			color: green;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="color-red">Titulo fuera del vue</h1>
+	<div id="root">
+		<button :title="title">Soy un boton</button><br>
+
+		<a :href="nextPage">Ir a otra pagina</a><br>
+
+		<button @click="togglePages">Cambiar siguiente pagina</button>
+
+		<h1 :class="color">Soy un H1</h1>
+
+		<button @click="changeColor">Cambiar</button>
+
+		<button :class="{ 'is-loading': true, 'is-sending-email': sendingEmail }">The "Is-loading" button</button>
+		<button @click="toggleFlag(sendingEmail)">Toggle sending email</button>
+		<button :disabled="disableButton">The "disabled" button</button>
+		<button @click="toggleFlag(disableButton)">Toggle the disabled attribute on the button above</button>
+	</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+<script>
+	var app = new Vue({
+		el: '#root',
+		data: {
+			title: 'Un boton especial, un boton con Vue.JS',
+			nextPage: 'https://www.googgle.com.ar',
+			color: 'color-red',
+			sendingEmail: true,
+			disableButton: false,
+		},
+		methods: {
+			togglePages: function(){
+				if(this.nextPage !== 'https://www.googgle.com.ar'){
+					this.nextPage = 'https://www.googgle.com.ar';
+				}else{
+					this.nextPage = 'https://www.facebook.com';
+				}
+			},
+			changeColor: function(){
+				if (this.color !== "color-red") {
+					this.color = "color-red";
+				}else{
+					this.color = "color-blue";
+				}
+			},
+			toggleFlag: function(flag){
+				this[flag] = !this[flag];
+			}
+		}
+	});
+</script>
+</body>
+</html>

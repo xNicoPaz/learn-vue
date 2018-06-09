@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta lang="es-AR">
+	<style>
+	</style>
+</head>
+<body>
+	<div id="root">
+		<h1>
+			{{ reversedMessage }}
+		</h1>
+
+		<h3>Todas las tareas</h3>
+		<ul>
+			<li v-for="task in tasks">{{ task.descripcion }}</li>
+		</ul>
+
+		<h3>Tareas incompletas</h3>
+		<ul>
+			<li v-for="task in incompleteTasks">{{ task.descripcion }}</li>
+		</ul>
+
+		<h3>Tareas completas</h3>
+		<ul>
+			<li v-for="task in completeTasks">{{ task.descripcion }}</li>
+		</ul>
+	</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+<script>
+Array.prototype.diff = function (a) {
+    return this.filter(function (i) {
+        return a.indexOf(i) === -1;
+    });
+};
+
+var app = new Vue({
+	el: '#root',
+	data: {
+		message: "Hello Nico",
+		tasks: [
+			{descripcion: 'Programar', completed: true},
+			{descripcion: 'Preparar estudio', completed: false},
+			{descripcion: 'Llamar a mi amada novia', completed: false},
+			
+		]
+	},
+	computed: {
+		reversedMessage: function(){
+			return this.message.split('').reverse().join('');
+		},
+		incompleteTasks: function(){
+			return this.tasks.filter(function(task){
+				return !task.completed;
+			});
+		},
+		completeTasks: function(){
+			return this.tasks.diff(this.incompleteTasks);
+		}
+	}
+});
+</script>
+</body>
+</html>

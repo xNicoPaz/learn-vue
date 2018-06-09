@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta lang="es-AR">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container" id="root">
+		<div class="row">
+			<member-list :members="members">
+				<h1 slot="header">Lista de miembros del GP</h1>
+				<template slot="footer">
+					<button class="btn btn-primary" @click="eventHandler.$emit('joinGroupButtonClicked')">Unirme al GP</button>
+				</template>
+			</member-list>
+
+			<alert-info inline-template>
+				<div class="alert alert-info">
+					Esto es un inline template
+				</div>
+			</alert-info>
+		</div>
+	</div>
+
+	<div id="eventHandler" style="display: none"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+<script>
+
+Array.prototype.diff = function (a) {
+    return this.filter(function (i) {
+        return a.indexOf(i) === -1;
+    });
+};
+</script>
+<script src="js/gp.js"></script>
+</body>
+</html>

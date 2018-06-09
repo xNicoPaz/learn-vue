@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta lang="es-AR">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+	<div class="container" id="root">
+		<tabs>
+			<tab name="Perros">
+				Nos especializamos en pasear a sus perros
+			</tab>
+			<tab name="Gatos">
+				Tambien nos especializamos en acariciar a sus gatos
+			</tab>
+			<tab name="Motos">
+				Y tambien vendemos repuestos para motos, somos una empresa polifacetica
+			</tab>
+		</tabs>
+
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+	<script>
+
+	Array.prototype.diff = function (a) {
+		return this.filter(function (i) {
+			return a.indexOf(i) === -1;
+		});
+	};
+	</script>
+	<script src="js/tabs2.js"></script>
+</body>
+</html>

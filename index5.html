@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta lang="es-AR">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+	<div class="container" id="root">
+		<div class="row">
+			<button class="btn btn-primary" @click="showPanel = true">Mostrar panel</button>
+			<panel title="Amo a mi novia" message="Mi novia es Yani" v-on:close-panel="showPanel = false" v-if="showPanel"></panel>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+	<script>
+
+	Array.prototype.diff = function (a) {
+		return this.filter(function (i) {
+			return a.indexOf(i) === -1;
+		});
+	};
+	</script>
+	<script src="js/index5.js"></script>
+</body>
+</html>
